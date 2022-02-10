@@ -1,0 +1,37 @@
+diff --git a/src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java b/src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java
+index 2877ddee..30e729c1 100644
+--- a/src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java
++++ b/src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java
+@@ -1415,8 +1415,12 @@ public class GenericKeyedObjectPool extends BaseKeyedObjectPool implements Keyed
+                     listForKey.add(pairTimeStamp);
+                     toDestroy.put(key, listForKey);
+                 }
+-                objectQueue.incrementInternalProcessingCount();
++                if (list.isEmpty()) {
++                    _poolMap.remove(key);
++                    _poolList.remove(key);
++                }
+                 _totalIdle--;
++                _totalInternalProcessing++;
+                 itemsToRemove--;
+             }
+ 
+@@ -1473,17 +1478,7 @@ public class GenericKeyedObjectPool extends BaseKeyedObjectPool implements Keyed
+                     // ignore error, keep destroying the rest
+                 } finally {
+                     synchronized(this) {
+-                        ObjectQueue objectQueue =
+-                                (ObjectQueue) _poolMap.get(key);
+-                        if (objectQueue != null) {
+-                            objectQueue.decrementInternalProcessingCount();
+-                            if (objectQueue.internalProcessingCount == 0 &&
+-                                    objectQueue.activeCount == 0 &&
+-                                    objectQueue.queue.isEmpty()) {
+-                                _poolMap.remove(key);
+-                                _poolList.remove(key);
+-                            }
+-                        }
++                        _totalInternalProcessing--;
+                         allocate();
+                     }
+                 }

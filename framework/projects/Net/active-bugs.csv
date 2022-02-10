@@ -1,0 +1,15 @@
+bug.id,revision.id.buggy,revision.id.fixed,report.id,report.url
+9,2b248a62e4148b5f92ec7c8d10a7eac1184bb015,46c9b97454b17150b3ee7b2de973eae4aed8522a,NET-268,https://issues.apache.org/jira/browse/NET-268
+10,432510450e21779226669b40d0b3531baaf8e27b,5278cd419abc3ccaabc352ba67631b1985eb4bed,NET-428,https://issues.apache.org/jira/browse/NET-428
+12,ceb54335d722859644f74774554a5a02f100aae3,9d090d40ef488c6c8e0784da877b93a05034e339,NET-511,https://issues.apache.org/jira/browse/NET-511
+14,1ab1a17fd37c377d96c8b41f41178ef1498c7fb5,717068898a67d03b7c2435e9f16bb65aced68048,NET-520,https://issues.apache.org/jira/browse/NET-520
+15,75129393c169ef25314223d903426c8be0716a77,41dd3db34ae2c03f5b5148bcca84653055c0e3eb,NET-516,https://issues.apache.org/jira/browse/NET-516
+16,061d70dd783a9150601fc884cc93831d39efd751,b26a3b41b047cdcc37aa65625075fa621d13f66e,NET-539,https://issues.apache.org/jira/browse/NET-539
+17,c5192345305636887229eb7ae0829d621effc2b4,aee94d0b51becdc83ea4a74e86b242d0ca3d6f0a,NET-551,https://issues.apache.org/jira/browse/NET-551
+18,506d027199a615962ad5df482f077792841a01c1,5555226cf8d009ee9fdb9164a919e96d768c529e,NET-550,https://issues.apache.org/jira/browse/NET-550
+20,1762d632b7c343fc524e1e6495babeaf2b9b8550,50a124bf76c36d47d797306ccadcb3d97c43caca,NET-566,https://issues.apache.org/jira/browse/NET-566
+21,77a30c218d8b1505a9ed450e62625321bdf000fb,e8d76ef9c72325b773b9141a8566ce1147c1ebc6,NET-581,https://issues.apache.org/jira/browse/NET-581
+23,ba2886c990242c32e75d94a9d4c7ec9aa2571f10,76036954547d0ead559f4e7b258019b3355d05a4,NET-624,https://issues.apache.org/jira/browse/NET-624
+24,1acb3d3f5f8230e4329be95644c9f433b75bf0cb,d8f9af13ba04b2b483f6d441d1c4071174726988,NET-631,https://issues.apache.org/jira/browse/NET-631
+25,24dd750b5bb142d26d3c74f1d884533f66006346,e08fbb9e9adffc54c5ad87ddfd57b590e65ef862,NET-639,https://issues.apache.org/jira/browse/NET-639
+26,f38341cab4a20f7f690072f24d648cea8e0f5784,2d935482d9b026ccd2cb2b55fcb05380a4466500,NET-641,https://issues.apache.org/jira/browse/NET-641

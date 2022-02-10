@@ -1,0 +1,51 @@
+diff --git a/src/test/org/apache/commons/pool2/impl/TestGenericKeyedObjectPool.java b/src/test/org/apache/commons/pool2/impl/TestGenericKeyedObjectPool.java
+index 72105a16..9efb3161 100644
+--- a/src/test/org/apache/commons/pool2/impl/TestGenericKeyedObjectPool.java
++++ b/src/test/org/apache/commons/pool2/impl/TestGenericKeyedObjectPool.java
+@@ -1371,39 +1371,38 @@ public class TestGenericKeyedObjectPool extends TestKeyedObjectPool {
+
+-    @Test(timeout=60000)
+     public void testWhenExhaustedBlockClosePool() throws Exception {
+         SimpleFactory<String> factory = new SimpleFactory<String>();
+         GenericKeyedObjectPool<String,String> pool =
+             new GenericKeyedObjectPool<String,String>(factory);
+         pool.setMaxTotalPerKey(1);
+         pool.setBlockWhenExhausted(true);
+-        pool.setMaxWait(-1);
++        pool.setMaxWait(0);
+         String obj1 = pool.borrowObject("a");
+       
+         // Check thread was interrupted
+-        assertTrue(wtt._thrown instanceof InterruptedException);
++        assertTrue(wtt._thrown instanceof IllegalStateException);
+     }
+  
+     /*
+      * Very simple test thread that just tries to borrow an object from
+      * the provided pool with the specified key and returns it 
+diff --git a/src/test/org/apache/commons/pool2/impl/TestGenericObjectPool.java b/src/test/org/apache/commons/pool2/impl/TestGenericObjectPool.java
+index 864d5c05..eb558743 100644
+--- a/src/test/org/apache/commons/pool2/impl/TestGenericObjectPool.java
++++ b/src/test/org/apache/commons/pool2/impl/TestGenericObjectPool.java
+@@ -1177,11 +1177,10 @@ public class TestGenericObjectPool extends TestBaseObjectPool {
+     /**
+      * POOL-189
+      */
+-    @Test(timeout=60000)
+     public void testWhenExhaustedBlockClosePool() throws Exception {
+         pool.setMaxTotal(1);
+         pool.setBlockWhenExhausted(true);
+-        pool.setMaxWait(-1);
++        pool.setMaxWait(0);
+         Object obj1 = pool.borrowObject();
+ 
+         // Make sure an object was obtained
+@@ -1200,7 +1199,7 @@ public class TestGenericObjectPool extends TestBaseObjectPool {
+         Thread.sleep(200);
+ 
+         // Check thread was interrupted
+-        assertTrue(wtt._thrown instanceof InterruptedException);
++        assertTrue(wtt._thrown instanceof IllegalStateException);
+     }
+ 
+     private class ConcurrentBorrowAndEvictThread extends Thread {
