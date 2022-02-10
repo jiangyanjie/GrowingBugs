@@ -1,0 +1,2 @@
+bug.id,revision.id.buggy,revision.id.fixed,report.id,report.url
+1,1169a69fcef6204ef9f29a7a3ea50f97fe593aa6,cd0f6d394d5ca0cc6bca77928809953dbb0e736b,MGPG-78,https://issues.apache.org/jira/browse/MGPG-78
