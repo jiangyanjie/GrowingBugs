@@ -1,0 +1,13 @@
+diff --git a/src/test/java/org/apache/commons/validator/routines/IBANValidatorTest.java b/src/test/java/org/apache/commons/validator/routines/IBANValidatorTest.java
+index 9eea465f..a8e55b8e 100644
+--- a/src/test/java/org/apache/commons/validator/routines/IBANValidatorTest.java
++++ b/src/test/java/org/apache/commons/validator/routines/IBANValidatorTest.java
+@@ -46,7 +46,7 @@ public class IBANValidatorTest {
+             "BR1800000000141455123924100C2",
+             "BR9700360305000010009795493P1",
+             "CH9300762011623852957",
+-            "CR05015202001026284066",
++            "CR0515202001026284066",
+             "CY17002001280000001200527600",
+             "CZ6508000000192000145399",
+             "CZ9455000000001011038930",
