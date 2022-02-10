@@ -1,0 +1,17 @@
+diff --git a/src/test/java/org/apache/commons/imaging/formats/png/PngWithInvalidPngChunkSizeTest.java b/src/test/java/org/apache/commons/imaging/formats/png/PngWithInvalidPngChunkSizeTest.java
+index 10de8022..faa5d658 100644
+--- a/src/test/java/org/apache/commons/imaging/formats/png/PngWithInvalidPngChunkSizeTest.java
++++ b/src/test/java/org/apache/commons/imaging/formats/png/PngWithInvalidPngChunkSizeTest.java
+@@ -50,19 +50,4 @@ public class PngWithInvalidPngChunkSizeTest {
+ 		Imaging.getBufferedImage(imageFile, params);
+ 	}
+ 
+-    @Test(expected = ImageReadException.class)
+-    public void testPngWithInvalidNegativePngChunkSize() throws IOException, ImageReadException {
+-        final File imageFile = new File(
+-                JpegWithInvalidDhtSegmentTest.class.getResource("/IMAGING-210/testfile.png").getFile());
+-        final Map<String, Object> params = new HashMap<>();
+-        params.put(ImagingConstants.BUFFERED_IMAGE_FACTORY, new ManagedImageBufferedImageFactory());
+-        Imaging.getBufferedImage(imageFile, params);
+-    }
+ }

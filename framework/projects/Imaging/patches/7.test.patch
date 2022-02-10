@@ -1,0 +1,48 @@
+diff --git a/src/test/java/org/apache/commons/imaging/formats/jpeg/segments/NegSizeSegmentTest.java b/src/test/java/org/apache/commons/imaging/formats/jpeg/segments/NegSizeSegmentTest.java
+deleted file mode 100644
+index 71957d96..00000000
+--- a/src/test/java/org/apache/commons/imaging/formats/jpeg/segments/NegSizeSegmentTest.java
++++ /dev/null
+@@ -1,61 +0,0 @@
+-package org.apache.commons.imaging.formats.jpeg.segments;
+
+-import org.apache.commons.imaging.ImageReadException;
+-import org.apache.commons.imaging.formats.jpeg.JpegImageParser;
+-import org.apache.commons.imaging.formats.jpeg.JpegUtils;
+-import org.apache.commons.imaging.common.bytesource.ByteSource;
+-import org.apache.commons.imaging.common.bytesource.ByteSourceInputStream;
+-import org.junit.Test;
+
+-import java.io.ByteArrayInputStream;
+-import java.io.IOException;
+-import java.io.InputStream;
+-import java.util.HashMap;
+-import static org.junit.Assert.assertEquals;
+-import static org.junit.Assert.fail;
+
+-public class NegSizeSegmentTest {
+
+-    @Test
+-    public void testCreatesNegSizeSegment() throws IOException {
+-        byte[] bytes = new byte[8];
+-        bytes[0] = (byte) 0xff;
+-        bytes[1] = (byte) 0xd8;
+-        bytes[2] = (byte) 0xe1;
+-        bytes[3] = (byte) 0xff;
+-        bytes[4] = (byte) 0x01;
+-        bytes[5] = (byte) 0x00;
+-        bytes[6] = (byte) 0x00;
+-        bytes[7] = (byte) 0x00;
+
+-        try {
+-            InputStream inputStream = new ByteArrayInputStream(bytes);
+-            ByteSource bs = new ByteSourceInputStream(inputStream, "NegSizeSegment");
+-            JpegImageParser p = new JpegImageParser();
+-            p.getBufferedImage(bs, new HashMap<String, Object>());
+-            fail("Expecting exception: ImageReadException");
+-        } catch (ImageReadException e) {
+-            assertEquals("Invalid segment size", e.getMessage());
+-            assertEquals(JpegUtils.class.getName(), e.getStackTrace()[0].getClassName());
+-        }
+-    }
+-}

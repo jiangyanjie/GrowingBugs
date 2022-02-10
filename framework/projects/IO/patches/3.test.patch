@@ -1,0 +1,76 @@
+diff --git a/src/test/java/org/apache/commons/io/FileUtilsCopyToFileTestCase.java b/src/test/java/org/apache/commons/io/FileUtilsCopyToFileTestCase.java
+deleted file mode 100644
+index 76dfc22a..00000000
+--- a/src/test/java/org/apache/commons/io/FileUtilsCopyToFileTestCase.java
++++ /dev/null
+@@ -1,102 +0,0 @@
+-package org.apache.commons.io;
+
+-import java.io.ByteArrayInputStream;
+-import java.io.File;
+-import java.io.IOException;
+-import java.io.InputStream;
+-import org.apache.commons.io.testtools.TestUtils;
+-import org.junit.Assert;
+-import org.junit.Before;
+-import org.junit.Rule;
+-import org.junit.Test;
+-import org.junit.rules.TemporaryFolder;
+
+-public class FileUtilsCopyToFileTestCase {
+
+-    @Rule
+-    public TemporaryFolder temporaryFolder = new TemporaryFolder();
+
+-    private File getTestDirectory() {
+-        return temporaryFolder.getRoot();
+-    }
+
+-    private File testFile;
+-    private byte[] testData;
+
+-    @Before
+-    public void setUp() throws Exception {
+-        testFile = new File(getTestDirectory(), "file1-test.txt");
+-        if(!testFile.getParentFile().exists()) {
+-            throw new IOException("Cannot create file " + testFile + 
+-                " as the parent directory does not exist");
+-        }
+-        testData = TestUtils.generateTestData(1024);
+-    }
+
+-    @Test
+-    public void testCopyToFile() throws IOException {
+-        try(CheckingInputStream inputStream = new CheckingInputStream(testData)) {
+-            FileUtils.copyToFile(inputStream, testFile);
+-            Assert.assertFalse("inputStream should NOT be closed", inputStream.isClosed());
+-        }
+-    }
+
+-    @Test
+-    public void testCopyInputStreamToFile() throws IOException {
+-        try(CheckingInputStream inputStream = new CheckingInputStream(testData)) {
+-            FileUtils.copyInputStreamToFile(inputStream, testFile);
+-            Assert.assertTrue("inputStream should be closed", inputStream.isClosed());
+-        }
+-    }
+
+-    private class CheckingInputStream extends ByteArrayInputStream {
+-        private boolean closed;
+
+-        public CheckingInputStream(byte[] data) {
+-            super(data);
+-            closed = false;
+-        }
+
+-        @Override
+-        public void close() throws IOException {
+-            super.close();
+-            closed = true;
+-        }
+
+-        public boolean isClosed() {
+-            return closed;
+-        }
+-    }
+-}

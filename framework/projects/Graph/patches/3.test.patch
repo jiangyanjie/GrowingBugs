@@ -1,0 +1,74 @@
+diff --git a/src/test/java/org/apache/commons/graph/model/BaseMutableGraphTestCase.java b/src/test/java/org/apache/commons/graph/model/BaseMutableGraphTestCase.java
+index 36a4358..b8a9e26 100644
+--- a/src/test/java/org/apache/commons/graph/model/BaseMutableGraphTestCase.java
++++ b/src/test/java/org/apache/commons/graph/model/BaseMutableGraphTestCase.java
+@@ -267,102 +267,4 @@ public class BaseMutableGraphTestCase
+ 
+         g.getEdge( source, target );
+     }
+
+-    @Test
+-    public final void testDirectedGraphRemoveEdge()
+-    {
+-        final DirectedMutableGraph<BaseLabeledVertex, BaseLabeledEdge> g = new DirectedMutableGraph<BaseLabeledVertex, BaseLabeledEdge>();
+-        final BaseLabeledVertex source = new BaseLabeledVertex( valueOf( 1 ) );
+-        final BaseLabeledVertex target = new BaseLabeledVertex( valueOf( 2 ) );
+-        buildCompleteGraph( 10, g );
+-        BaseLabeledEdge e = g.getEdge( source, target );
+-        g.removeEdge( e );  
+-        BaseLabeledEdge edge = g.getEdge( source, target );
+-        assertNull( edge  );
+-    }
+
+-    @Test
+-    public final void testUndirectedGraphRemoveEdge()
+-    {
+
+-        final UndirectedMutableGraph<BaseLabeledVertex, BaseLabeledEdge> g =
+-            new UndirectedMutableGraph<BaseLabeledVertex, BaseLabeledEdge>();
+-        final BaseLabeledVertex source = new BaseLabeledVertex( valueOf( 1 ) );
+-        final BaseLabeledVertex target = new BaseLabeledVertex( valueOf( 2 ) );
+-        buildCompleteGraph( 10, g );
+-        BaseLabeledEdge e = g.getEdge( source, target );
+-        g.removeEdge( e );
+-        BaseLabeledEdge edge = g.getEdge( source, target );
+-        assertNull( edge );
+-    }
+
+-    @Test( expected = GraphException.class )
+-    public final void testUndirectedGraphRemoveEdgeNotExists()
+-    {
+
+-        UndirectedMutableGraph<BaseLabeledVertex, BaseLabeledEdge> g = null;
+-        BaseLabeledEdge e = null;
+-        try
+-        {
+-            g = new UndirectedMutableGraph<BaseLabeledVertex, BaseLabeledEdge>();
+-            buildCompleteGraph( 10, g );
+-            e = new BaseLabeledEdge( "NOT EXIST" );
+-        }
+-        catch ( GraphException ex )
+-        {
+-            fail( ex.getMessage() );
+-        }
+-        g.removeEdge( e );
+-    }
+
+-    @Test( expected = GraphException.class )
+-    public final void testDirectedGraphRemoveEdgeNotExists()
+-    {
+-        DirectedMutableGraph<BaseLabeledVertex, BaseLabeledEdge> g = null;
+-        BaseLabeledEdge e = null;
+-        try
+-        {
+-            g = new DirectedMutableGraph<BaseLabeledVertex, BaseLabeledEdge>();
+-            buildCompleteGraph( 10, g );
+-            e = new BaseLabeledEdge( "NOT EXIST" );
+-        }
+-        catch ( GraphException ex )
+-        {
+-            fail( ex.getMessage() );
+-        }
+-        g.removeEdge( e );
+-    }
+ }

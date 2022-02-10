@@ -1,0 +1,33 @@
+diff --git a/src/java/org/apache/commons/io/IOUtils.java b/src/java/org/apache/commons/io/IOUtils.java
+index b46c8c7b..4d85b7af 100644
+--- a/src/java/org/apache/commons/io/IOUtils.java
++++ b/src/java/org/apache/commons/io/IOUtils.java
+@@ -995,12 +995,13 @@ public class IOUtils {
+      * @throws ArithmeticException if the byte count is too large
+      * @since Commons IO 1.1
+      */
+-    public static int copy(InputStream input, OutputStream output) throws IOException {
++    public static int copy(InputStream input, OutputStream output)
++            throws IOException {
+         long count = copyLarge(input, output);
+         if (count > Integer.MAX_VALUE) {
+-            return -1;
++            throw new ArithmeticException("The byte count " + count + " is too large to be converted to an int");
+         }
+-        return (int) count;
++        return (int)count;
+     }
+ 
+     /**
+@@ -1103,9 +1104,9 @@ public class IOUtils {
+     public static int copy(Reader input, Writer output) throws IOException {
+         long count = copyLarge(input, output);
+         if (count > Integer.MAX_VALUE) {
+-            return -1;
++            throw new ArithmeticException("The character count " + count + " is too large to be converted to an int");
+         }
+-        return (int) count;
++        return (int)count;
+     }
+ 
+     /**

@@ -1,0 +1,11 @@
+bug.id,revision.id.buggy,revision.id.fixed,report.id,report.url
+1,979c6856b1869ecf1309c926f732ab52af8c3334,39f463da29620668e1a4c6459997be52cce72681,IMAGING-82,https://issues.apache.org/jira/browse/IMAGING-82
+3,5ab7a3e29bb8c6a13b961a06db7d9ca3a298f4cf,7d886c0bf06232096740c5066aaf5510d8e7abf5,IMAGING-169,https://issues.apache.org/jira/browse/IMAGING-169
+4,f1fe855f42701c5d98a9b7c59f3626e762bc06f6,801a75dcf871914d243f585c8755140eda52c69f,IMAGING-178,https://issues.apache.org/jira/browse/IMAGING-178
+5,cd5ef9b33efea115d54d5f536f157cbae3990366,ed6115b320aa309100ba2edabff22f5e0c51a71b,IMAGING-176,https://issues.apache.org/jira/browse/IMAGING-176
+6,b4374368a133614347ca4583cc3f34c84cf538aa,fb0be4a4b561ddc3aa942f2929f734b0bdd9a035,IMAGING-209,https://issues.apache.org/jira/browse/IMAGING-209
+7,c5ca63fe3864a0fd7673641d08049741e94a0287,4701b96281124b9ccd6ecd35c3f16aa73345f315,IMAGING-203,https://issues.apache.org/jira/browse/IMAGING-203
+8,eb98398bd111cdc35b2c9a5fc8022a28d7c99035,f5574bfe285edd79207fe8c30f53cb0af06e26bb,IMAGING-219,https://issues.apache.org/jira/browse/IMAGING-219
+10,120ef1c107e8641a4277b46997dd144bb851df5d,305e78a0aef8dc0cd267581ebc7a4a5f8316ee18,IMAGING-199,https://issues.apache.org/jira/browse/IMAGING-199
+11,55f7368822b9781d186024524c7cd08adb3a2f59,f55035ac7fb451e85e3139c959a25f47f4ffd04a,IMAGING-211,https://issues.apache.org/jira/browse/IMAGING-211
+14,0c773d2a83c81eb470ab491f9bb4eb0031c3f9f1,02bd6c4fb271cbf69fe11554b3dbb69279428c6f,IMAGING-210,https://issues.apache.org/jira/browse/IMAGING-210

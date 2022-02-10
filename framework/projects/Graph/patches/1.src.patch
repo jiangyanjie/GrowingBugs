@@ -1,0 +1,88 @@
+diff --git a/src/main/java/org/apache/commons/graph/coloring/GraphColoring.java b/src/main/java/org/apache/commons/graph/coloring/GraphColoring.java
+index d2103c9..031e7c0 100644
+--- a/src/main/java/org/apache/commons/graph/coloring/GraphColoring.java
++++ b/src/main/java/org/apache/commons/graph/coloring/GraphColoring.java
+@@ -1,8 +1,6 @@
+ package org.apache.commons.graph.coloring;
+ 
+-import java.util.ArrayList;
+ import java.util.Iterator;
+-import java.util.List;
+ 
+ import org.apache.commons.graph.Edge;
+ import org.apache.commons.graph.UndirectedGraph;
+@@ -54,42 +50,34 @@ public final class GraphColoring
+         }
+ 
+         // search coloring
++        int currrentColorIndex = 0;
+ 
+         Iterator<V> it = uncoloredOrderedVertices.iterator();
+-        for ( int currentColorIndex = 0; it.hasNext(); currentColorIndex++ )
++        while ( it.hasNext() )
+         {
+             // consume the vertex.
+-            it.next();
++            V v = it.next();
+ 
+             // this list contains all vertex colore with the current color.
+-            List<V> currentColorVertices = new ArrayList<V>();
+-            Iterator<V> uncoloredVtxIterator = uncoloredOrderedVertices.iterator();
+-            while ( uncoloredVtxIterator.hasNext() )
+-            {
+-                V uncoloredVtx = uncoloredVtxIterator.next();
++            it.remove();
++            coloredVertices.addColor( v, currrentColorIndex );
+ 
+-                boolean foundAnAdjacentVertex = false;
+-                for ( V currentColoredVtx : currentColorVertices )
+-                {
+-                    if ( g.getEdge( currentColoredVtx, uncoloredVtx ) != null )
+-                    {
+                         // we've found that 'uncoloredVtx' is adiacent to 'currentColoredVtx'
+-                        foundAnAdjacentVertex = true;
+-                        break;
+-                    }
+-                }
+-
+-                if ( !foundAnAdjacentVertex )
++            Iterator<V> it2 = uncoloredOrderedVertices.iterator();
++            while ( it2.hasNext() )
++            {
++                V v2 = it2.next();
++                if ( g.getEdge( v, v2 ) == null )
+                 {
+                     // It's possible to color the vertex 'uncoloredVtx', it has no connected vertex into
+                     // 'currentcoloredvtx'
+-                    uncoloredVtxIterator.remove();
+-                    coloredVertices.addColor( uncoloredVtx, currentColorIndex );
+-                    currentColorVertices.add( uncoloredVtx );
++                    it2.remove();
++                    coloredVertices.addColor( v2, currrentColorIndex );
+                 }
+             }
+ 
+             it = uncoloredOrderedVertices.iterator();
++            currrentColorIndex++;
+         }
+ 
+         return coloredVertices;
+diff --git a/src/main/java/org/apache/commons/graph/coloring/UncoloredOrderedVertices.java b/src/main/java/org/apache/commons/graph/coloring/UncoloredOrderedVertices.java
+index 98b1363..7ab4720 100644
+--- a/src/main/java/org/apache/commons/graph/coloring/UncoloredOrderedVertices.java
++++ b/src/main/java/org/apache/commons/graph/coloring/UncoloredOrderedVertices.java
+@@ -111,14 +111,10 @@ final class UncoloredOrderedVertices<V extends Vertex>
+         };
+     }
+ 
+     /**
+      * Returns the number of vertices degrees in the graph.
+      *
+      * @return the number of vertices degrees in the graph.
+      */
+-    public int size()
+-    {
+-        return orderedVertices.size();
+-    }
+ 
+ }
