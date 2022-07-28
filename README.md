@@ -2,7 +2,7 @@
 
 Notably, each bug is composed of a buggy version, a fixed version, a ***concise patch*** (bug-fixing changes only), and one or more triggering test cases.
 
-We forked ***growingBugs*** from ***GrowingBugRepository*** on Feb 10 2022. For further details, we can turn to https://github.com/liuhuigmail/GrowingBugRepository
+We forked ***growingBugs*** from ***GrowingBugRepository*** on Feb 10 2022. For further details, you can turn to https://github.com/liuhuigmail/GrowingBugRepository
 
 # Contents of growingBugs
 To date, growingBugs contains **`487`** bugs from open-source Java projects. 
