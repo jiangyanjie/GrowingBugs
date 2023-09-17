@@ -31,7 +31,6 @@
 | UnrecognizedPropertyException                     |           |
 | AssertionError                                    |           |
 | InvalidDefinitionException                        |           |
-| Argument(s) are different! Wanted                 |           |
 | NotImplementedException                           |           |
 | WFCException                                      |           |
 | IllegalCharsetNameException                       |           |
