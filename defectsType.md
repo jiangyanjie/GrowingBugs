@@ -3,6 +3,14 @@
 | AssertionFailedError                              |           |
 | ComparisonFailure                                 |           |
 | NullPointerException                              |           |
+| Memory Safety                                     |           |
+| Concurrency                                       |           |
+| Exposed Resource                                  |           |
+| File Handling                                     |           |
+| Incorrect Calculation                             |           |
+| Memory Buffer Errors                              |           |
+| Pointer Issues                                    |           |
+| Type Errors                                       |           |
 | ZipException                                      |           |
 | UnsupportedOperationException                     |           |
 | IllegalArgumentException                          |           |
